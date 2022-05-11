@@ -6,6 +6,7 @@ function patterns() {
     const [patterns, setPatterns] = React.useState([]);
     const [pattern_data, setPatternData] = React.useState({
         pattern: '',
+        timestamps: null
     });
     const [type, setType] = React.useState('color');
 
@@ -28,7 +29,7 @@ function patterns() {
 
     const handleTypes = (type) => {
         setType(type);
-        setPatternData({ ...pattern_data, pattern: "" });
+        setPatternData({ ...pattern_data, pattern: "", timestamps: null });
     }
 
     const handleInput = (e) => {
