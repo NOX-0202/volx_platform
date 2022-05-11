@@ -16,13 +16,15 @@ export default async function handler(req, res) {
 
         const db = new DBWalker();
         console.log(req.body)
+
+
         const patterns = await db.insert({
             table: "patterns",
             data: {
                 uuid: uuidv4(),
                 type: req.body.type,
                 value: req.body.pattern,
-                timestamp: req.body.timestamps.replace('T', " ") ?? null,
+                timestamp: req.body.timestamps ?? null,
             }
         }).run();
 

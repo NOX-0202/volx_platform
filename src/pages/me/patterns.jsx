@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import api from '../../libs/api';
 
 function patterns() {
-
+    const [patterns, setPatterns] = React.useState([]);
     const [pattern_data, setPatternData] = React.useState({
         pattern: '',
     });
@@ -11,14 +11,12 @@ function patterns() {
 
     const getPatterns = async () => {
         api.get('/patterns').then(res => {
-            console.log(res)
-            // setPatternData(res.data);
+            setPatterns(res.data.data);
         });
     }
 
     const insertPattern = async (e) => {
         e.preventDefault()
-        console.log(pattern_data)
         api.post('/patterns', {
             timestamps: pattern_data.timestamps,
             pattern: pattern_data.pattern,
@@ -34,16 +32,30 @@ function patterns() {
     }
 
     const handleInput = (e) => {
+
         setPatternData({ ...pattern_data, [e.target.name]: e.target.value });
+    }
+
+    const formatDate = (date) => {
+
+        date = date.split("T");
+        date = `${date[0].split("-").reverse().join("/")} ${date[1].split(".")[0]}`;
+
+        return date
+
     }
 
     useEffect(() => {
         getPatterns();
     }, []);
 
+    useEffect(() => {
+        console.log(pattern_data);
+    }, [pattern_data]);
 
 
-    return <main className="">
+
+    return <main>
         <div className="container-fluid container-lg d-flex flex-column p-3 gap-3">
             <h1>Padrões</h1>
             <ul className="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
@@ -77,23 +89,23 @@ function patterns() {
             <div className="tab-content" id="pills-tabContent">
                 <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div className="row text-center">
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "🔴" })}><button className="btn btn-outline-primary w-100">🔴</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫" })}><button className="btn btn-outline-primary w-100">⚫</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪" })}><button className="btn btn-outline-primary w-100">⚪</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⭕ " })}><button className="btn btn-outline-primary w-100">⭕</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫ " })}><button className="btn btn-outline-primary w-100">⚫</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪ " })}><button className="btn btn-outline-primary w-100">⚪</button></div>
                     </div>
                 </div>
                 <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"></div>
                 <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div className="row text-center">
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "🔴" })}><button className="btn btn-outline-primary w-100">🔴</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫" })}><button className="btn btn-outline-primary w-100">⚫</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪" })}><button className="btn btn-outline-primary w-100">⚪</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⭕ " })}><button className="btn btn-outline-primary w-100">⭕</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫ " })}><button className="btn btn-outline-primary w-100">⚫</button></div>
+                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪ " })}><button className="btn btn-outline-primary w-100">⚪</button></div>
                     </div>
                 </div>
             </div>
 
 
-            <table className="table table-stripped">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>tipo</th>
@@ -101,6 +113,20 @@ function patterns() {
                         <th>Data</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {patterns.length > 0 && patterns.map(pattern => {
+
+                        let date = "";
+
+                        if (pattern.timestamp) date = formatDate(pattern.timestamp);
+
+                        return <tr key={pattern.id}>
+                            <td className="w-20">{pattern.type}</td>
+                            <td className="w-50">{pattern.value}</td>
+                            <td className="w-30">{date}</td>
+                        </tr>
+                    })}
+                </tbody>
             </table>
         </div>
     </main >;
