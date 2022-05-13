@@ -32,6 +32,7 @@ export default async function handler(req, res) {
         }).run()
 
 
+
         return res.status(200).json({ ...users });
     }
 
