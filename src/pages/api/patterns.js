@@ -24,6 +24,7 @@ export default async function handler(req, res) {
             table: "patterns",
             data: {
                 uuid: uuidv4(),
+                user_uuid: req.body.user_uuid,
                 type: req.body.type,
                 pattern: req.body.pattern,
                 result: req.body.result,

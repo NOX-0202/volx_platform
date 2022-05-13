@@ -1,3 +1,4 @@
+import localforage from 'localforage';
 import { useRouter } from 'next/router';
 import { set } from 'nprogress';
 import React, { useEffect } from 'react';
@@ -22,6 +23,7 @@ function patterns() {
         e.preventDefault()
         api.post('/patterns', {
             timestamps: pattern_data.timestamps,
+            user_uuid: await localforage.getItem('user').then(res => res[0].uuid),
             pattern: pattern_data.pattern,
             result: pattern_data.result,
             type: type
