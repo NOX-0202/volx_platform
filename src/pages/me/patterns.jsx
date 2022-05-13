@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import { set } from 'nprogress';
 import React, { useEffect } from 'react';
 import api from '../../libs/api';
 
 function patterns() {
+    const router = useRouter();
     const [patterns, setPatterns] = React.useState([]);
     const [pattern_data, setPatternData] = React.useState({
         pattern: '',
@@ -58,7 +60,9 @@ function patterns() {
 
     return <main>
         <div className="container-fluid container-lg d-flex flex-column p-3 gap-3">
-            <h1>Padrões</h1>
+            <div className="d-flex flex-row align-items-center gap-2">
+                <button className="btn btn-sm btn-secondary" onClick={() => router.back()}>Voltar</button><span className="h1">Padrões</span>
+            </div>
             <ul className="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
                 <li className="nav-item" role="presentation">
                     <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={() => { handleTypes("color") }}>COR</button>
