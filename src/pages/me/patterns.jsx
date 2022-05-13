@@ -23,6 +23,7 @@ function patterns() {
         api.post('/patterns', {
             timestamps: pattern_data.timestamps,
             pattern: pattern_data.pattern,
+            result: pattern_data.result,
             type: type
         }).then(res => {
             getPatterns();
@@ -35,8 +36,18 @@ function patterns() {
     }
 
     const handleInput = (e) => {
-
         setPatternData({ ...pattern_data, [e.target.name]: e.target.value });
+    }
+
+    const handleEmoji = (color_id = null) => {
+
+        const emojis = {
+            "0": "⚪",
+            "1": "⭕",
+            "2": "⚫",
+        }
+
+        handleInput({ target: { name: 'pattern', value: pattern_data.pattern += color_id } });
     }
 
     const formatDate = (date) => {
@@ -80,10 +91,17 @@ function patterns() {
                 <div className="row g-3">
                     <div className="col-12 col-md-8">
                         <div className="input-group">
-                            <input type={"text"} readOnly={type == 'color' ? true : false} className="form-control" name="pattern" placeholder="Digite o padrão" value={pattern_data.pattern.split(" ").join(",")} onChange={(e) => setPatternData({ ...pattern_data, pattern: e.target.value })} />
+                            <input type={"text"} readOnly={type == 'color' ? true : false} className="form-control" name="pattern" placeholder="Digite o padrão" value={pattern_data.pattern.split(" ").join(",")} onChange={handleInput} />
+                            <select name="result" value={pattern_data.result ?? ''} onChange={handleInput} style={{ width: 100 }}>
+                                <option value="">Resultado</option>
+                                <option value="0">⚪</option>
+                                <option value="1">🔴</option>
+                                <option value="2">⚫</option>
+                            </select>
                             <div className="btn btn-danger" onClick={() => setPatternData({ ...pattern_data, pattern: '' })}> X </div>
                         </div>
                     </div>
+
                     <div className="col-12 col-md-4 d-flex flex-row gap-3">
                         <input type="datetime-local" name="timestamps" className="form-control" value={pattern_data.timestamps ?? ''} onChange={handleInput} step="1" />
                         <button className="btn btn-outline-primary" type="submit">ENVIAR</button>
@@ -94,17 +112,17 @@ function patterns() {
             <div className="tab-content" id="pills-tabContent">
                 <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div className="row text-center">
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⭕ " })}><button className="btn btn-outline-primary w-100">⭕</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫ " })}><button className="btn btn-outline-primary w-100">⚫</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪ " })}><button className="btn btn-outline-primary w-100">⚪</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('1')}><button className="btn btn-outline-primary w-100">🔴</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('2')}><button className="btn btn-outline-primary w-100">⚫</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('0')}><button className="btn btn-outline-primary w-100">⚪</button></div>
                     </div>
                 </div>
                 <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"></div>
                 <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div className="row text-center">
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⭕ " })}><button className="btn btn-outline-primary w-100">⭕</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚫ " })}><button className="btn btn-outline-primary w-100">⚫</button></div>
-                        <div className="col-4 p-3" onClick={() => setPatternData({ ...pattern_data, pattern: pattern_data.pattern + "⚪ " })}><button className="btn btn-outline-primary w-100">⚪</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('1')}><button className="btn btn-outline-primary w-100">🔴</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('2')}><button className="btn btn-outline-primary w-100">⚫</button></div>
+                        <div className="col-4 p-3" onClick={() => handleEmoji('0')}><button className="btn btn-outline-primary w-100">⚪</button></div>
                     </div>
                 </div>
             </div>
@@ -115,6 +133,7 @@ function patterns() {
                     <tr>
                         <th>tipo</th>
                         <th>Padrão</th>
+                        <th>Resultado</th>
                         <th>Data</th>
                     </tr>
                 </thead>
@@ -127,7 +146,8 @@ function patterns() {
 
                         return <tr key={pattern.id}>
                             <td className="w-20">{pattern.type}</td>
-                            <td className="w-50">{pattern.value}</td>
+                            <td className="w-50">{pattern.pattern}</td>
+                            <td className="w-20">{pattern.result == 0 ? '⚪' : pattern.result == 1 ? '🔴' : '⚫'}</td>
                             <td className="w-30">{date}</td>
                         </tr>
                     })}

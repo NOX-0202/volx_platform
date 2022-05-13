@@ -23,7 +23,8 @@ export default async function handler(req, res) {
             data: {
                 uuid: uuidv4(),
                 type: req.body.type,
-                value: req.body.pattern,
+                pattern: req.body.pattern,
+                result: req.body.result,
                 timestamp: req.body.timestamps ?? null,
             }
         }).run();
