@@ -1,3 +1,4 @@
+import cors from "@/root/src/libs/cors";
 import DBWalker from "dbwalker";
 import md5 from "md5";
 
