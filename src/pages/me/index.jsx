@@ -30,6 +30,7 @@ function me() {
 
     const menu = [];
     menu.push({ name: 'Padrões', link: '/me/patterns' });
+    menu.push({ name: 'Bot Double', link: '/me/bots/double' });
 
     return loading ? <Spinner className="text-primary" /> : <main>
         <div className="container my-4">
@@ -38,13 +39,15 @@ function me() {
                 <button className="btn btn-danger" onClick={() => logout()}>Sair</button>
             </div>
             <hr />
-            {
-                menu.map(item => {
-                    return <div className="d-flex flex-row gap-2" key={item.name}>
-                        <a href={item.link} className="btn btn-primary">{item.name}</a>
-                    </div>
-                })
-            }
+            <div className="d-flex flex-row gap-3">
+                {
+                    menu.map(item => {
+                        return <div className="d-flex flex-row gap-2" key={item.name}>
+                            <a href={item.link} className="btn btn-primary">{item.name}</a>
+                        </div>
+                    })
+                }
+            </div>
 
         </div>
     </main>;
