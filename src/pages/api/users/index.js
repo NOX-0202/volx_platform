@@ -20,23 +20,6 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST") {
-        const db = new DBWalker();
-
-        const users = db.select({
-            table: "users",
-            where: [
-                [
-                    { email: body.login },
-                    { username: body.login }
-                ],
-                { password: md5(body.password) }
-            ]
-        }).format()
-
-        console.log(users)
-
-        return res.status(200).json({ ...users });
-
         res.status(200).json({});
     }
 
