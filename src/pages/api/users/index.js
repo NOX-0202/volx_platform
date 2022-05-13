@@ -2,6 +2,7 @@ import DBWalker from "dbwalker";
 import md5 from "md5";
 
 export default async function handler(req, res) {
+    cors(req, res);
 
     const { query, params, body, headers } = req;
 
