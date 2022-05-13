@@ -19,7 +19,6 @@ export default async function handler(req, res) {
     if (req.method === "POST") {
         const db = new DBWalker();
 
-        const $return = {};
 
         const users = await db.select({
             table: "users",
@@ -31,11 +30,13 @@ export default async function handler(req, res) {
                 { password: md5(body.password) }
             ],
             limit: 1
-        }).run()
+        }).toString()
 
+        const run = await db.run();
 
+        console.log(users)
 
-        return res.status(200).json({ ...users });
+        return res.status(200).json({ ...run });
     }
 
     if (req.method === "DELETE") {
