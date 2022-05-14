@@ -83,9 +83,9 @@ function patterns() {
                 <li className="nav-item" role="presentation">
                     <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick={() => { handleTypes("number") }}>NÚMERO</button>
                 </li>
-                <li className="nav-item" role="presentation">
+                {/* <li className="nav-item" role="presentation">
                     <button className="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onClick={() => { handleTypes("custom") }}>PERSONALIZADO</button>
-                </li>
+                </li> */}
             </ul>
 
             <p className="text-muted mb-3 text-uppercase">sempre separar os padrões por espaço:</p>
