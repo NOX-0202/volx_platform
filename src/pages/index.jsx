@@ -1,8 +1,9 @@
 import localforage from "localforage"
 import { useRouter } from "next/router"
-import react, { useState } from "react"
+import react, { useState, useEffect } from "react"
 import Spinner from "../components/Pageloading"
 import api from "../libs/api"
+import { verifyUser } from "../libs/verify_user"
 
 export default function Home({ }) {
   const router = useRouter()
@@ -38,6 +39,17 @@ export default function Home({ }) {
       toggleLoading(false)
     })
   }
+
+  useEffect(() => {
+    console.log('home')
+    localforage.getItem('user').then(user => {
+      if (user) {
+        router.push('/me')
+      }
+    }
+    )
+  }, [])
+
 
 
   return (
