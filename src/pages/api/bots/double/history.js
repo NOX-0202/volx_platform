@@ -1,3 +1,4 @@
+import { blazeApi } from "@/root/src/libs/api";
 import axios from "axios";
 
 export default async function handler(req, res) {
@@ -6,7 +7,7 @@ export default async function handler(req, res) {
     } else if (req.method === "GET") {
 
         try {
-            const req = await axios.get(`https://blaze.com/api/roulette_games/recent/history`);
+            const req = await blazeApi.get(`https://blaze.com/api/roulette_games/recent/history`);
             console.log(req)
             res.status(200).json(req.data);
         } catch (e) {
