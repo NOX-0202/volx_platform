@@ -53,12 +53,9 @@ function patterns() {
     }
 
     const formatDate = (date) => {
-
         date = date.split("T");
         date = `${date[0].split("-").reverse().join("/")} ${date[1].split(".")[0]}`;
-
         return date
-
     }
 
     useEffect(() => {
@@ -74,7 +71,9 @@ function patterns() {
     return <main>
         <div className="container-fluid container-lg d-flex flex-column p-3 gap-3">
             <div className="d-flex flex-row align-items-center gap-2">
-                <button className="btn btn-sm btn-secondary" onClick={() => router.back()}>Voltar</button><span className="h1">Padrões</span>
+                <button className="btn btn-sm btn-secondary text-uppercase" onClick={() => router.back()}>
+                    <span>voltar</span>
+                </button><span className="h1">Padrões</span>
             </div>
             <ul className="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
                 <li className="nav-item" role="presentation">
