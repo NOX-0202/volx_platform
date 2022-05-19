@@ -1,6 +1,7 @@
 import DBWalker from "dbwalker";
 import { v4 as uuidv4 } from 'uuid';
-import cors from "../../libs/cors";
+import cors from "@/root/src/libs/cors";
+
 
 export default async function handler(req, res) {
     cors(req, res);
