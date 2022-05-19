@@ -23,16 +23,13 @@ function double() {
 
 
     useEffect(() => {
-        getHistory()
-    }, [])
-
-    useEffect(() => {
         (async () => {
             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(async (page) => {
                 await getHistory(page)
             })
         })();
-    }, [page])
+    }, [])
+
 
     return <main>
         <div className="container">
