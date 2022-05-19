@@ -2,7 +2,7 @@ import localforage from 'localforage';
 import { useRouter } from 'next/router';
 import { set } from 'nprogress';
 import React, { useEffect } from 'react';
-import api from '../../libs/api';
+import api from '../../../../../libs/api';
 
 function patterns() {
     const router = useRouter();
