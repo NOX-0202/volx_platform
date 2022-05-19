@@ -14,8 +14,7 @@ function double() {
     const getHistory = async (page) => {
         try {
             const get_history_req = await api.get(`/bots/blaze/double/history?page=${page}`)
-            history.push(...get_history_req.data.records);
-            setHistory([...history]);
+            setHistory(get_history_req.data);
         } catch (error) {
             console.log(error);
         }
@@ -24,9 +23,7 @@ function double() {
 
     useEffect(() => {
         (async () => {
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(async (page) => {
-                await getHistory(page)
-            })
+            await getHistory()
         })();
     }, [])
 
