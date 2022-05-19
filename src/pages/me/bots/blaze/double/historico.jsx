@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 function double() {
     const router = useRouter();
 
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
     const [history, setHistory] = useState([]);
 
     const getHistory = async (page) => {
@@ -28,7 +28,9 @@ function double() {
 
     useEffect(() => {
         (async () => {
-            await getHistory()
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(async (page) => {
+                await getHistory(page)
+            })
         })();
     }, [page])
 
