@@ -1,4 +1,4 @@
-import cors from "@/root/src/libs/cors";
+import cors from "./../../../../../libs/cors";
 import DBWalker from "dbwalker";
 import { v4 as uuidv4 } from 'uuid';
 
