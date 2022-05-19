@@ -1,10 +1,7 @@
-import cors from "./../../../../../libs/cors";
 import DBWalker from "dbwalker";
 import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
-    cors(req, res);
-
     const db = new DBWalker();
 
     if (req.method === "PUT") {
