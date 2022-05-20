@@ -2,7 +2,7 @@
   "name": "bot_invest",
   "version": "0.1.0",
   "private": true,
-  "title": "Bot Invest",
+  "title": "Volx Invest | Plataforma de Investimentos",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

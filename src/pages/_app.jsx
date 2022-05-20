@@ -1,6 +1,7 @@
 import "../../styles/material-colors-vars.scss";
 import "../../styles/global.scss";
 import "../../styles/nprogress.css";
+import "../../styles/index.css";
 
 const pkg = require("@/root/package.json");
 

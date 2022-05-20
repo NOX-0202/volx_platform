@@ -1,0 +1,35 @@
+.main_header {
+    background-color: #121214;
+    padding: 10px;
+}
+
+.dropdown-item-custom:hover {
+    border: 1px solid #4249db;
+    background-color: #121214;
+    border-radius: 5px;
+    color: #cecece;
+}
+
+@media (max-width: 1000px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .menu-toogle {
+        display: block;
+    }
+}
+
+@media (min-width: 1000px) {
+    .mobile-nav {
+        display: none;
+    }
+
+    .menu-toogle {
+        display: none;
+    }
+}

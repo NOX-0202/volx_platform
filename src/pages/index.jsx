@@ -1,68 +1,65 @@
-import localforage from "localforage"
-import { useRouter } from "next/router"
-import react, { useState, useEffect } from "react"
-import Spinner from "../components/Pageloading"
-import api from "../libs/api"
-import { verifyUser } from "../libs/verify_user"
+import React from 'react';
 
-export default function Home({ }) {
-  const router = useRouter()
-  const [login_form, setLoginForm] = useState({})
-  const [loading, toggleLoading] = useState(false)
-  const [error_message, setErrorMessage] = useState('')
+function pages() {
+    return <main>
+        <header className='main_header'>
+            <div className="container d-flex flex-row justify-content-between align-items-baseline">
+                <div className="left m-0">
+                    <img src="/assets/logo.svg" alt="Volx Logo" width={75} />
+                </div>
 
-  const handleInput = (e) => {
-    setLoginForm({
-      ...login_form,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    toggleLoading(true)
-    console.log(login_form)
-    api.post('/users/auth', login_form).then(async res => {
-      console.log(res)
-      if (res.data.success && res.data.data.length < 1) {
-        setErrorMessage('Login ou senha incorretos')
-        return;
-      }
-
-      setErrorMessage('')
-      await localforage.setItem('user', res.data.data)
-      router.push('/me')
-
-    }).catch(err => {
-      console.log(err)
-    }).finally(() => {
-      toggleLoading(false)
-    })
-  }
-
-  useEffect(() => {
-    console.log('home')
-    localforage.getItem('user').then(user => {
-      if (user) {
-        router.push('/me')
-      }
-    }
-    )
-  }, [])
-
-
-
-  return (
-    <main style={{ height: "100vh" }} className="border">
-      <div className="h-100 d-flex flex-column container justify-content-center align-items-center">
-        <h1>Blaze Bot</h1>
-        <form onSubmit={handleSubmit} className="d-flex flex-column gap-2 w-100" style={{ maxWidth: 550 }}>
-          <input type="text" placeholder="email ou username" name="login" className="form-control" value={login_form.login ?? ""} onChange={handleInput} />
-          <input type="password" placeholder="Senha" name="password" className="form-control" value={login_form.password ?? ""} onChange={handleInput} />
-          {error_message && <p className="alert alert-danger">{error_message}</p>}
-          <button className="btn btn-success d-flex flex-row justify-content-center align-items-center gap-2" style={{ height: 40 }}>ENVIAR {loading && <Spinner className={"text-white fa-xs m-0 p-0"} />} </button>
-        </form>
-      </div>
-    </main>
-  )
+                <div className="middle desktop-nav">
+                    <ul className='navbar-nav text-secondary d-flex flex-row gap-5'>
+                        <li>Home</li>
+                        <li>
+                            <spam className="dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuLink"  >Produtos</spam>
+                            <ul class="dropdown-menu main_header mt-4 p-2 border-white w-100" aria-labelledby="dropdownMenuLink">
+                                <div className="d-flex flex-row justify-content-between">
+                                    <li><a class="dropdown-item-custom" href="#">Action</a></li>
+                                    <li><a class="dropdown-item-custom" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item-custom" href="#">Something else here</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li>Sobre</li>
+                        <li>Contato</li>
+                    </ul>
+                </div>
+                <div className="d-flex flex-row align-items-center ">
+                    <div className="sign-in mx-4 desktop-nav">
+                        <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
+                        <a href="/login" className='text-white text-decoration-none fw-bold'>Entrar</a>
+                    </div>
+                    <button className='btn text-white fw-bold desktop-nav' style={{ border: "2px solid #4249db", fontSize: 13 }} >CADASTRAR</button>
+                </div>
+                <div className="menu-toogle">
+                    <i class="fa-light fa-bars fa-2xl " style={{ color: "#4249db" }} data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></i>
+                </div>
+            </div>
+            <div className="mobile-nav container collapse" id="collapseExample">
+                <ul className='navbar-nav text-secondary d-flex flex-column gap-3 m-2'>
+                    <li>Home</li>
+                    <li>
+                        <spam className="dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuLink"  >Produtos</spam>
+                        <ul class="dropdown-menu main_header mt-4 p-2 border-white w-100" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item-custom" href="#">Action</a></li>
+                            <li><a class="dropdown-item-custom" href="#">Another action</a></li>
+                            <li><a class="dropdown-item-custom" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li>Sobre</li>
+                    <li>Contato</li>
+                </ul>
+                <div className="d-flex flex-row align-items-center justify-content-between">
+                    <div className="sign-in">
+                        <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
+                        <a href="/login" className='text-white text-decoration-none fw-bold'>Entrar</a>
+                    </div>
+                    <button className='btn text-white fw-bold' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</button>
+                </div>
+            </div>
+        </header>
+    </main>;
 }
+
+export default pages;

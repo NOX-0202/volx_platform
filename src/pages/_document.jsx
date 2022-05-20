@@ -15,6 +15,8 @@ class MyDocument extends Document {
                     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
                     <meta name="theme-color" content="#212121" />
                     <meta name="msapplication-navbutton-color" content="#212121" />
+                    {/* add favicon */}
+                    <link rel="icon" type="image/png" href="/assets/favicon.png" />
 
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
                     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
