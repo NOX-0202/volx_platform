@@ -53,15 +53,27 @@ export default function Home({ }) {
 
 
   return (
-    <main style={{ height: "100vh" }} className="border">
-      <div className="h-100 d-flex flex-column container justify-content-center align-items-center">
-        <h1>Blaze Bot</h1>
-        <form onSubmit={handleSubmit} className="d-flex flex-column gap-2 w-100" style={{ maxWidth: 550 }}>
-          <input type="text" placeholder="email ou username" name="login" className="form-control" value={login_form.login ?? ""} onChange={handleInput} />
-          <input type="password" placeholder="Senha" name="password" className="form-control" value={login_form.password ?? ""} onChange={handleInput} />
-          {error_message && <p className="alert alert-danger">{error_message}</p>}
-          <button className="btn btn-success d-flex flex-row justify-content-center align-items-center gap-2" style={{ height: 40 }}>ENVIAR {loading && <Spinner className={"text-white fa-xs m-0 p-0"} />} </button>
-        </form>
+    <main className="bg-volx ">
+      <a href="/" className="text-volx fw-bold m-3 text-decoration-none"><i class="fa-light fa-arrow-left"></i> Voltar</a>
+      <div className="h-100 container d-flex justify-content-center align-items-center">
+        <div className="row">
+          <div className="col">
+            <div className="d-block mb-4">
+              <img src="/assets/logo.svg" alt="" />
+            </div>
+            <h1 className="text-white fw-bold">Faça o login na plataforma</h1>
+          </div>
+          <div className="col">
+            <form onSubmit={handleSubmit} className="d-flex flex-column gap-2 w-100 login-box">
+              <input type="text" placeholder="email ou username" name="login" className="form-control-lg" value={login_form.login ?? ""} onChange={handleInput} />
+              <input type="password" placeholder="Senha" name="password" className="form-control-lg" value={login_form.password ?? ""} onChange={handleInput} />
+              <a href="/recuperar" className="text-volx text-decoration-none fw-bold text-center">Esquecei a senha</a>
+              {error_message && <p className="alert alert-danger">{error_message}</p>}
+              <button className="btn btn-volx d-flex flex-row justify-content-center align-items-center gap-2" style={{ height: 45 }}>ENVIAR {loading && <Spinner className={"text-white fa-xs m-0 p-0"} />} </button>
+              <p className="text-center text-white fw-bold">Não tem uma conta? <span className="text-volx fw-bold"> Cadastre-se </span></p>
+            </form>
+          </div>
+        </div>
       </div>
     </main>
   )

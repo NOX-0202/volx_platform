@@ -1,7 +1,6 @@
 * {
     // outline: 1px dashed lime;
     text-transform: uppercase;
-    font-family: 'montserrat', sans-serif;
     box-sizing: border-box;
 }
 
@@ -20,4 +19,18 @@ main {
 
 .fa-spin {
     animation-duration: 500ms;
+}
+
+.bg-volx {
+    background-color: #121214;
+}
+
+.text-volx {
+    color: #4249db;
+}
+
+.btn-volx {
+    background-color: #4249db;
+    color: #fff;
+    font-weight: 900;
 }
