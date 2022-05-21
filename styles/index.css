@@ -1,6 +1,14 @@
 .main_header {
     background-color: #121214;
-    padding: 10px;
+    padding: 5PX;
+}
+
+.navbar-item-custom {
+    padding: 20px 30px;
+}
+
+.navbar-item-custom:hover {
+    border-bottom: 3px solid #4249db;
 }
 
 .dropdown-item-custom:hover {
@@ -27,6 +35,10 @@
 @media (min-width: 1000px) {
     .mobile-nav {
         display: none;
+    }
+
+    .main_header {
+        height: 72px;
     }
 
     .menu-toogle {
