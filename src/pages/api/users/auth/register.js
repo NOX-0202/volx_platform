@@ -1,5 +1,6 @@
 import cors from "@/root/src/libs/cors";
-import DBWalker from "dbwalker"; import { v4 as uuidv4 } from 'uuid';
+import DBWalker from "dbwalker"; import md5 from "md5";
+import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
     cors(req, res);
@@ -13,17 +14,21 @@ export default async function handler(req, res) {
     } else if (req.method === "GET") {
         res.status(200).json({});
     } else if (req.method === "POST") {
+        const insert_data = {
+            uuid: uuidv4(),
+            email: body.email,
+            password: md5(body.password),
+            name: body.name,
+            username: body.username,
+            role_id: 4,
+            active: 1
+        }
         const insertUser = await db.insert({
             table: "users",
-            data: {
-                uuid: uuidv4(),
-                ...body,
-                role_id: 4,
-                active: 1
-            }
+            data: insert_data
         }).run()
 
-        res.status(200).json({ ...insertUser });
+        res.status(200).json({ success: insertUser.success, id: insertUser.insert_id, ...insert_data });
     } else if (req.method === "DELETE") {
         res.status(204).json({});
     } else {
