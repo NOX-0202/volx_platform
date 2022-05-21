@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Spinner from '../../components/Pageloading';
+import api from '../../libs/api';
 
 // import { Container } from './styles';
 
@@ -19,7 +20,8 @@ function auth() {
         e.preventDefault()
         toggleLoading(true)
         console.log(user)
-        api.post('/users/auth', user).then(async res => {
+        delete user.password_confirm
+        api.post('/users/auth/register', user).then(async res => {
             console.log(res)
             if (res.data.success && res.data.data.length < 1) {
                 setErrorMessage('Login ou senha incorretos')
@@ -27,7 +29,7 @@ function auth() {
             }
 
             setErrorMessage('')
-            await localforage.setItem('user', res.data.data)
+            await localforage.setItem('user', user)
             router.push('/me')
 
         }).catch(err => {
@@ -50,6 +52,7 @@ function auth() {
                     <div className="col">
                         <form onSubmit={handleSubmit} className="d-flex flex-column gap-2 w-100 login-box">
                             <input type="text" placeholder="email" name="email" className="form-control-lg" value={user.email ?? ""} onChange={handleInput} />
+                            <input type="text" placeholder="Nome completo" name="name" className="form-control-lg" value={user.name ?? ""} onChange={handleInput} />
                             <input type="text" placeholder="username" name="username" className="form-control-lg" value={user.username ?? ""} onChange={handleInput} />
                             <input type="password" placeholder="Senha" name="password" className="form-control-lg" value={user.password ?? ""} onChange={handleInput} />
                             <input type="password" placeholder="Confirmar senha" name="password_confirm" className="form-control-lg" value={user.password_confirm ?? ""} onChange={handleInput} />

@@ -22,7 +22,7 @@ export default function Home({ }) {
     e.preventDefault()
     toggleLoading(true)
     console.log(login_form)
-    api.post('/users/auth', login_form).then(async res => {
+    api.post('/users/auth/login', login_form).then(async res => {
       console.log(res)
       if (res.data.success && res.data.data.length < 1) {
         setErrorMessage('Login ou senha incorretos')

@@ -1,5 +1,5 @@
 import cors from "@/root/src/libs/cors";
-import DBWalker from "dbwalker";
+import DBWalker from "dbwalker"; import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
     cors(req, res);
@@ -15,7 +15,12 @@ export default async function handler(req, res) {
     } else if (req.method === "POST") {
         const insertUser = await db.insert({
             table: "users",
-            data: body
+            data: {
+                uuid: uuidv4(),
+                ...body,
+                role_id: 4,
+                active: 1
+            }
         }).run()
 
         res.status(200).json({ ...insertUser });
