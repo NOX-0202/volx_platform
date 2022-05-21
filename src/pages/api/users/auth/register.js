@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     } else if (req.method === "POST") {
         const insertUser = await db.insert({
             table: "users",
-            data: req.body
+            data: body
         }).run()
 
         res.status(200).json({ ...insertUser });
