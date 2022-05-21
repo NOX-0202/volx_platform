@@ -35,4 +35,17 @@ main {
     background-color: #4249db;
     color: #fff;
     font-weight: 900;
+    border: none;
+    outline: none;
+}
+
+.form-control-lg {
+    color: #fff;
+    border: 2px solid #121214;
+    background-color: #121214;
+}
+
+.form-control-lg:focus {
+    border: 2px solid #4249db;
+    outline: none;
 }
