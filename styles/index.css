@@ -31,6 +31,19 @@
     color: #cecece;
 }
 
+.signup-btn:hover {
+    background-color: #4249db;
+    color: #cecece;
+}
+
+.signin-link {
+    color: #fff;
+}
+
+.signin-link:hover {
+    color: #4249db;
+}
+
 @media (max-width: 1000px) {
     .desktop-nav {
         display: none;

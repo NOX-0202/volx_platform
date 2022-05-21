@@ -37,9 +37,9 @@ function pages() {
                 <div className="d-flex flex-row align-items-center ">
                     <div className="sign-in mx-4 desktop-nav">
                         <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
-                        <a href="/auth/login" className='text-white text-decoration-none fw-bold' style={{ fontSize: 13 }}>Entrar</a>
+                        <a href="/auth/login" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Entrar</a>
                     </div>
-                    <a href='/auth/registrar' className='btn text-white desktop-nav fw-bold' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</a>
+                    <a href='/auth/registrar' className='btn text-white desktop-nav fw-bold signup-btn' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</a>
                 </div>
                 <div className="menu-toogle">
                     <i className="fa-light fa-bars fa-2xl " style={{ color: "#4249db" }} data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></i>
@@ -71,15 +71,15 @@ function pages() {
                 <div className="d-flex flex-row align-items-center justify-content-between">
                     <div className="sign-in">
                         <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
-                        <a href="/auth/login" className='text-white text-decoration-none fw-bold'>Entrar</a>
+                        <a href="/auth/login" className='text-white text-decoration-none fw-bold signin-link'>Entrar</a>
                     </div>
 
                     <a href='/auth/registrar' className='btn text-white fw-bold' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</a>
                 </div>
             </div>
         </header>
-        <section className="main_content text-center mt-5">
-            <h1 className='fw-bold'>Em breve</h1>
+        <section className="main_content mt-5">
+
         </section>
     </main>;
 }

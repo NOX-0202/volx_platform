@@ -54,7 +54,7 @@ export default function Home({ }) {
 
   return (
     <main className="bg-volx">
-      <a href="/" className="text-volx fw-bold m-3 text-decoration-none"><i class="fa-light fa-arrow-left"></i> Voltar</a>
+      <a href="/" className="text-volx fw-bold m-3 text-decoration-none"><i className="fa-light fa-arrow-left"></i> Voltar</a>
       <div className="h-100 container d-flex justify-content-center align-items-center">
         <div className="row">
           <div className="col">
