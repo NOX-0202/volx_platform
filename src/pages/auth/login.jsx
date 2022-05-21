@@ -1,9 +1,9 @@
 import localforage from "localforage"
 import { useRouter } from "next/router"
 import react, { useState, useEffect } from "react"
-import Spinner from "../components/Pageloading"
-import api from "../libs/api"
-import { verifyUser } from "../libs/verify_user"
+import Spinner from "../../components/Pageloading"
+import api from "../../libs/api"
+import { verifyUser } from "../../libs/verify_user"
 
 export default function Home({ }) {
   const router = useRouter()
@@ -53,7 +53,7 @@ export default function Home({ }) {
 
 
   return (
-    <main className="bg-volx ">
+    <main className="bg-volx">
       <a href="/" className="text-volx fw-bold m-3 text-decoration-none"><i class="fa-light fa-arrow-left"></i> Voltar</a>
       <div className="h-100 container d-flex justify-content-center align-items-center">
         <div className="row">
