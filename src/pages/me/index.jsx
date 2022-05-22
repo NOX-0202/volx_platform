@@ -28,58 +28,69 @@ function me() {
         });
     }, []);
 
-    const menu = [];
-    menu.push({ name: 'Padrões', link: '/me/bots/blaze/double/patterns' });
-    menu.push({ name: 'Bot Double', link: '/me/bots/blaze/double' });
+    const blaze_menu = [];
+    blaze_menu.push({ name: 'Padrões', icon: "/assets/blaze_icons/double.svg", link: '/me/bots/blaze/double/patterns' });
+    blaze_menu.push({ name: 'Bot Double', icon: "/assets/blaze_icons/double.svg", link: '/me/bots/blaze/double' });
+    blaze_menu.push({ name: 'Bot Crash', icon: "/assets/blaze_icons/crash.svg", link: '/me/bots/blaze/double' });
 
     return loading ? <Spinner className="text-primary" /> : <main>
-        <div className="container my-4">
-            <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasExampleLabel">Volx</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div className="offcanvas-body">
-                    <ul>
-                        <li>Blaze
-                            <ul>
-                                <li>double
-                                    <ul>
-                                        <li>aposta automatica</li>
-                                        <li>Padrões</li>
-                                        <li>Histórico</li>
-                                    </ul>
-                                </li>
-                                <li>crash</li>
-                            </ul>
-                        </li>
-                        <li>Bc-game
-                            <ul>
-                                <li>crash</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="d-flex flex-row justify-content-between align-items-center">
+        <div className="p-2" style={{ backgroundColor: "rgb(32, 32, 36)" }}>
+            <div className="container d-flex flex-row justify-content-between align-items-center">
                 <div className="d-flex flex-row align-items-center gap-3">
-                    <i data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" className="fa-solid fa-bars fa-2xl"></i>
-                    <h3 className='mt-2'>Eae, {user.name ?? ""}</h3>
+                    <i data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" className="fa-solid fa-bars fa-2xl text-white"></i>
+                    <h3 className='mt-2 text-white'>Eae, {user.name ?? ""}</h3>
                 </div>
-                <button className="btn btn-danger" onClick={() => logout()}>Sair</button>
-            </div>
-            <hr />
 
-            <div className="d-flex flex-row gap-3">
-                {
-                    menu.map(item => {
-                        return <div className="d-flex flex-row gap-2" key={item.name}>
-                            <a href={item.link} className="btn btn-primary">{item.name}</a>
-                        </div>
-                    })
-                }
-            </div>
+                <button className='btn text-white fw-bold signup-btn' onClick={() => logout()} style={{ border: "2px solid #4249db", fontSize: 13 }}>Sair</button>
 
+            </div>
+        </div>
+
+        <div className="bg-volx h-100 ">
+            <div className="container d-flex flex-column my-4">
+                <h3 className='text-white'>Pacote Blaze: </h3>
+                <div className=" d-flex flex-row gap-3">
+                    {
+                        blaze_menu.map(item => {
+                            return <div className="d-flex flex-column justify-content-center align-items-center gap-2 rounded" style={{ backgroundColor: "rgb(32, 32, 36)", height: 150, width: 250 }} key={item.name}>
+                                <div>
+                                    <img src={item.icon} height="60" />
+                                </div>
+                                <a href={item.link} className="text-volx">{item.name}</a>
+                            </div>
+                        })
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <div className="offcanvas offcanvas-start bg-volx border-white" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div className="offcanvas-header">
+                <img src="/assets/logo.svg" width={80} />
+                <button type="button" className="btn text-volx h1" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+            </div>
+            <div className="offcanvas-body">
+                <ul>
+                    <li>Blaze
+                        <ul>
+                            <li>double
+                                <ul>
+                                    <li>aposta automatica</li>
+                                    <li>Padrões</li>
+                                    <li>Histórico</li>
+                                </ul>
+                            </li>
+                            <li>crash</li>
+                        </ul>
+                    </li>
+                    <li>Bc-game
+                        <ul>
+                            <li>crash</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </main>;
 }

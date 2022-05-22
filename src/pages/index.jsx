@@ -49,7 +49,7 @@ function pages() {
                 <ul className='navbar-nav text-secondary d-flex flex-column gap-3 m-2'>
                     <li>Home</li>
                     <li>
-                        <spam className="dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuLink"  >Produtos</spam>
+                        <spam className="dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuLink">Produtos</spam>
                         <ul className="dropdown-menu main_header mt-4 p-2 border-white w-100" aria-labelledby="dropdownMenuLink">
                             <li>
                                 <a className="dropdown-item-custom text-decoration-none" href="#">
@@ -81,6 +81,11 @@ function pages() {
         <section className="main_content mt-5">
 
         </section>
+        <footer>
+            <div className="container">
+
+            </div>
+        </footer>
     </main>;
 }
 

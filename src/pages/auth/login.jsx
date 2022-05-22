@@ -59,7 +59,7 @@ export default function Home({ }) {
         <div className="row">
           <div className="col">
             <div className="d-block mb-4">
-              <img src="/assets/logo.svg" alt="" />
+              <img src="/assets/logo.svg" width={170} />
             </div>
             <h1 className="text-white fw-bold">Faça o login na plataforma</h1>
           </div>

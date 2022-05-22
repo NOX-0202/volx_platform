@@ -13,8 +13,8 @@ function double() {
 
     const getHistory = async (page) => {
         try {
-            const get_history_req = await api.get(`/bots/blaze/double/history?page=${page}`)
-            setHistory(get_history_req.data);
+            const get_history_req = await api.get(`/bots/blaze/double/history`)
+            setHistory(get_history_req.data.data);
         } catch (error) {
             console.log(error);
         }
