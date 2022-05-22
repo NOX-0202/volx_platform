@@ -1,3 +1,4 @@
+import DashNav from '@/root/public/components/DashNav';
 import Spinner from '@/root/src/components/Pageloading';
 import api from '@/root/src/libs/api';
 import { verifyUser } from '@/root/src/libs/verify_user';
@@ -72,12 +73,9 @@ function bots() {
 
 
     return loading ? <Spinner className="text-primary" /> : <main>
-        <div className="container">
-            <div className="d-flex flex-row align-items-center gap-3 my-3">
-                <button className="btn btn-sm btn-secondary text-uppercase" onClick={() => router.back()}>voltar</button>
-                <h1>Double Bot!</h1>
-            </div>
-            <hr />
+        <DashNav title="Double Bot" />
+        <div className="container mt-3">
+            <a href="/me" className="text-volx fw-bold text-decoration-none"><i className="fa-light fa-arrow-left"></i> Voltar</a>
             <div className="d-flex flex-row align-items-center gap-3 my-3">
                 <button className="btn btn-primary w-100 text-uppercase" onClick={() => changeBotActivity()}>{!bot_active ? "Iniciar Bot" : "Parar bot"}</button>
             </div>
