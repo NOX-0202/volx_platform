@@ -70,7 +70,7 @@ export default function Home({ }) {
               <a href="/recuperar" className="text-volx text-decoration-none fw-bold text-center">Esquecei a senha</a>
               {error_message && <p className="alert alert-danger">{error_message}</p>}
               <button className="btn btn-volx d-flex flex-row justify-content-center align-items-center gap-2" style={{ height: 45 }}>ENVIAR {loading && <Spinner className={"text-white fa-xs m-0 p-0"} />} </button>
-              <p className="text-center text-white fw-bold">Não tem uma conta? <span className="text-volx fw-bold"> Cadastre-se </span></p>
+              <p className="text-center text-white fw-bold">Não tem uma conta? <a href="/auth/registrar" className="text-volx fw-bold"> Cadastre-se </a></p>
             </form>
           </div>
         </div>

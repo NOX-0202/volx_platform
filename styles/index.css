@@ -1,6 +1,7 @@
 .main_header {
     background-color: #121214;
     padding: 5PX;
+    border-bottom: 1px solid rgb(32, 32, 36);
 }
 
 .navbar-item-custom {
@@ -29,6 +30,20 @@
     background-color: rgb(32, 32, 36);
     border-radius: 5px;
     color: #cecece;
+}
+
+.btn-volx {
+    background-color: #4249db;
+    color: #cecece;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.main_section {
+    padding: 15% 0 40% 0;
+    background: linear-gradient(#121214, rgb(32, 32, 36));
 }
 
 .signup-btn:hover {

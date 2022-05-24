@@ -27,21 +27,25 @@ function pages() {
                             <ul className="dropdown-menu  drop-desktop mt-4 p-2 border-white w-100" aria-labelledby="dropdownMenuLink">
                                 <div className="d-flex flex-row justify-content-around">
                                     <li>
-                                        <a className="dropdown-item-custom text-decoration-none" href="#">
+                                        <a className="dropdown-item-custom text-decoration-none" href="#bot_double">
                                             <img src="/assets/blaze_icons/double.svg" width={50} />
                                             <p className='mt-3 text-muted'>BOT Double</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a className="dropdown-item-custom text-decoration-none" href="#">
+                                    <a className="dropdown-item-custom text-decoration-none" href="#bot_crash">
+                                        <li>
                                             <img src="/assets/blaze_icons/crash.svg" width={50} />
                                             <p className='mt-3 text-muted'>BOT Crash</p>
-                                        </a>
-                                    </li>
+                                        </li>
+                                    </a>
                                 </div>
                             </ul>
                         </li>
-                        <li className='navbar-item-custom'>Sobre</li>
+                        <a href='#about' className='text-decoration-none' style={{ color: "rgb(108,117,125)" }}>
+                            <li className='navbar-item-custom'>
+                                Sobre
+                            </li>
+                        </a>
                         <li className='navbar-item-custom'>Contato</li>
                     </ul>
                 </nav>
@@ -63,20 +67,24 @@ function pages() {
                         <spam className="dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuLink">Produtos</spam>
                         <ul className="dropdown-menu main_header mt-4 p-2 border-white w-100" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a className="dropdown-item-custom text-decoration-none" href="#">
+                                <a className="dropdown-item-custom text-decoration-none" href="#bot_double">
                                     <img src="/assets/blaze_icons/double.svg" width={50} />
                                     <p className='mt-3 text-muted'>BOT Double</p>
                                 </a>
                             </li>
                             <li>
-                                <a className="dropdown-item-custom text-decoration-none" href="#">
+                                <a className="dropdown-item-custom text-decoration-none" href="#bot_crash">
                                     <img src="/assets/blaze_icons/crash.svg" width={50} />
                                     <p className='mt-3 text-muted'>BOT Crash</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li>Sobre</li>
+                    <a href='#about' className='text-decoration-none' style={{ color: "rgb(108,117,125)" }}>
+                        <li>
+                            Sobre
+                        </li>
+                    </a>
                     <li>Contato</li>
                 </ul>
                 <div className="d-flex flex-row align-items-center justify-content-between">
@@ -89,12 +97,29 @@ function pages() {
                 </div>
             </nav>
         </header>
-
-        <section className="bg-gray py-5">
+        <section className='main_section d-flex flex-column justify-content-center align-items-center position-relative'>
+            <h1 className='text-white fw-bolder'>Seja bem-vindo a VOLX</h1>
+            <p className='text-white'>A plataforma que facilita a vida nas apostas</p>
+            <div style={{ border: "1px solid #4249db", width: "50%", top: "45%", padding: 10 }} className="position-absolute rounded">
+                <img src="/assets/dash.png" className='img-fluid' />
+            </div>
+        </section>
+        <a name="bot_double" />
+        <section className="bg-gray pb-5">
             <h1 className='h3 text-volx text-center p-4'>Bot Double</h1>
             <div className="container">
-                <div className="row my-4">
-                    <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
+                <div className="row my-4 g-3">
+                    <div className="col-md-6 d-flex flex-column justify-content-center">
+                        <p className='text-white'>O Blaze double é uma roleta que fica 24/7 rodando e você pode apostar em 3 cores: branco, vermelho e branco que você pode ganhar até 14 vezes oque você apostou!</p>
+                        <p className='text-white'>A volx te ajuda a tomar melhores decisões nas suas apostas com mais acertividade e facilidade pois nós temos todas as ferramentas necessárias como canal de apostas e bots automáticos!</p>
+                        <a href='/auth/registrar' className='text-decoration-none'>
+                            <button className='btn-volx d-flex flex-row gap-3 text-uppercase'>
+                                Tenha acesso a tudo isso
+                                <div>
+                                    <i className="pl-4 fal fa-arrow-right"></i>
+                                </div>
+                            </button>
+                        </a>
                     </div>
                     <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
                         <div className="p-2 rounded" style={{ border: "1px solid #4249db", width: "490px" }}>
@@ -104,22 +129,39 @@ function pages() {
                 </div>
             </div>
         </section>
+        <a name="bot_crash" />
         <section className="bg-volx py-5">
             <h1 className='h3 text-volx text-center p-4'>Bot Crash</h1>
             <div className="container">
-                <div className="row my-4">
+                <div className="row my-4 g-3">
                     <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
                         <div className="p-2 rounded" style={{ border: "1px solid #4249db", width: "520px" }}>
                             <img src="/assets/blaze_crash_panel.png" className='img-fluid' />
                         </div>
                     </div>
-                    <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
+                    <div className="col-md-6 d-flex flex-column justify-content-center">
+                        <p className='text-white'>O Blaze crash é um Gráfico que vai subindo sem parar mas a qualquer momento ele pode quebrar e todas as apostas que não foram retiradas antes de quebrar vão ser perdidas!</p>
+                        <p className='text-white'>A volx te ajuda a tomar melhores decisões nas suas apostas com mais acertividade e facilidade pois nós temos todas as ferramentas necessárias como canal de apostas e bots automáticos!</p>
+                        <a href='/auth/registrar' className='text-decoration-none'>
+                            <button className='btn-volx d-flex flex-row gap-3 text-uppercase'>
+                                Tenha acesso a tudo isso
+                                <div>
+                                    <i className="pl-4 fal fa-arrow-right"></i>
+                                </div>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+        <a name='about' />
         <section className="bg-gray py-5">
             <h1 className='h3 text-volx text-center p-4'>Sobre a Volx</h1>
+            <div className="container">
+                <p className='text-white text-center mx-5'>
+                    A Volx é uma plataforma que ajuda apostadores online e tem como objetivo facilitar a vida dos jogadores e ajudar a ganhar dinheiro com menos risco e com rapidez.
+                </p>
+            </div>
         </section>
         <section className="bg-volx pb-4">
             <h1 className='text-volx text-center h3 py-4'>Algumas das nossas funcionalidades!</h1>
