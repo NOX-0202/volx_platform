@@ -57,9 +57,9 @@ function auth() {
             <a href="/" className="text-volx fw-bold m-3 text-decoration-none"><i className="fa-light fa-arrow-left"></i> Voltar</a>
             <div className="h-100 container d-flex justify-content-center align-items-center">
                 <div className="row">
-                    <div className="col">
+                    <div className="col d-flex flex-column justify-content-center">
                         <div className="d-block mb-4">
-                            <img src="/assets/logo.svg" alt="" />
+                            <img src="/assets/logo.svg" width={170} />
                         </div>
                         <h1 className="text-white fw-bold">Faça o cadastro na plataforma</h1>
                     </div>

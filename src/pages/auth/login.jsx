@@ -58,7 +58,7 @@ export default function Home({ }) {
       <div className="h-100 container d-flex justify-content-center align-items-center">
         <div className="row">
           <div className="col">
-            <div className="d-block mb-4">
+            <div className="d-block mb-4 ml-4">
               <img src="/assets/logo.svg" width={170} />
             </div>
             <h1 className="text-white fw-bold">Faça o login na plataforma</h1>
