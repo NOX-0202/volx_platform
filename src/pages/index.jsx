@@ -97,21 +97,25 @@ function pages() {
                 </div>
             </nav>
         </header>
-        <section className='main_section d-flex flex-column justify-content-center align-items-center position-relative'>
-            <h1 className='text-white fw-bolder'>Seja bem-vindo a VOLX</h1>
-            <p className='text-white'>A plataforma que facilita a vida nas apostas</p>
-            <div style={{ border: "1px solid #4249db", width: "50%", top: "45%", padding: 10 }} className="position-absolute rounded">
+        <section className='main_section d-flex flex-column justify-content-center align-items-center'>
+            <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "70vh" }}>
+                <h1 className='text-white text-center  fw-bolder'>Seja bem-vindo a VOLX</h1>
+                <p className='text-white text-center'>A plataforma que facilita a vida nas apostas</p>
+            </div>
+            <div style={{ border: "1px solid #4249db", padding: 10 }} className="image-top rounded">
                 <img src="/assets/dash.png" className='img-fluid' />
             </div>
         </section>
+
+
         <a name="bot_double" />
-        <section className="bg-gray pb-5">
+        <section className="bg-gray py-5">
             <h1 className='h3 text-volx text-center p-4'>Bot Double</h1>
             <div className="container">
                 <div className="row my-4 g-3">
                     <div className="col-md-6 d-flex flex-column justify-content-center">
                         <p className='text-white'>O Blaze double é uma roleta que fica 24/7 rodando e você pode apostar em 3 cores: branco, vermelho e branco que você pode ganhar até 14 vezes oque você apostou!</p>
-                        <p className='text-white'>A volx te ajuda a tomar melhores decisões nas suas apostas com mais acertividade e facilidade pois nós temos todas as ferramentas necessárias como canal de apostas e bots automáticos!</p>
+                        <p className='text-white text-center'>A volx te ajuda a tomar melhores decisões nas suas apostas com mais acertividade e facilidade pois nós temos todas as ferramentas necessárias como canal de apostas e bots automáticos!</p>
                         <a href='/auth/registrar' className='text-decoration-none'>
                             <button className='btn-volx d-flex flex-row gap-3 text-uppercase'>
                                 Tenha acesso a tudo isso
@@ -200,7 +204,7 @@ function pages() {
                 </div>
             </div>
         </footer>
-    </main>;
+    </main >;
 }
 
 export default pages;

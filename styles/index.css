@@ -42,8 +42,12 @@
 }
 
 .main_section {
-    padding: 15% 0 40% 0;
     background: linear-gradient(#121214, rgb(32, 32, 36));
+    height: 100vh !important;
+}
+
+.image-top {
+    width: 90%;
 }
 
 .signup-btn:hover {
@@ -71,6 +75,8 @@
     .menu-toogle {
         display: block;
     }
+
+
 }
 
 @media (min-width: 1000px) {
@@ -85,6 +91,10 @@
 
     .menu-toogle {
         display: none;
+    }
+
+    .image-top {
+        width: 60%;
     }
 }
 
