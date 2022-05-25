@@ -214,7 +214,7 @@ function pages() {
                     <div class="modal-body">
                         <p className='text-center text-white fw-bolder'>Precisa de ajuda contacte-nos pelo whatsapp</p>
                         <div className='d-flex flex-column justify-content-center align-items-center gap-2'>
-                            <a href="https://api.whatsapp.com/send?phone=5511998888888&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Blaze%20Crash%20e%20a%20Volxinvest%20!" target="_blank" rel="noopener noreferrer" className='text-decoration-none'>
+                            <a href="https://api.whatsapp.com/send?phone=5521997895329&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Volxinvest%20!" target="_blank" rel="noopener noreferrer" className='text-decoration-none'>
                                 <i className="fab fa-whatsapp fa-2x" style={{ color: "#4249db", height: "70px" }}></i>
                                 <span className='text-white fw-bolder ml-4'>+55 (21) 9 9789-5329</span>
                             </a>
