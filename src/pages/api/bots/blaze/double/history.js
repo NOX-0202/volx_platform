@@ -12,6 +12,8 @@ export default async function handler(req, res) {
 
         try {
 
+
+
             const get_history = await db.select({
                 table: "blaze_history",
             }).run()

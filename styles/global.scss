@@ -39,14 +39,36 @@ main {
     outline: none;
 }
 
-.form-control-lg {
+.form-control-lg,
+.input-volx {
     color: #fff;
-    border: 2px solid #121214;
-    background-color: #121214;
+    border: 2px solid rgb(32, 32, 36);
+    background-color: rgb(32, 32, 36);
 }
 
-.form-control-lg:focus {
+.select-volx {
+    color: #fff;
+    border: 2px solid rgb(32, 32, 36);
+    background-color: rgb(32, 32, 36);
+}
+
+.btn-input-group-volx {
+    background-color: rgb(32, 32, 36);
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    outline: none;
+}
+
+.btn-input-group-volx:hover {
+    color: #4249db;
+}
+
+.form-control-lg:focus,
+.input-volx:focus {
+    color: #fff;
     border: 2px solid #4249db;
+    background-color: rgb(32, 32, 36);
     outline: none;
 }
 
