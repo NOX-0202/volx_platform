@@ -26,7 +26,8 @@ function me() {
     }, []);
 
     const blaze_menu = [];
-    blaze_menu.push({ name: 'Histórico', icon: "/assets/history.png", link: '/me/bots/blaze/double/history' });
+    blaze_menu.push({ name: 'Histórico double', icon: "/assets/history.png", link: '/me/bots/blaze/double/historico' });
+    blaze_menu.push({ name: 'Histórico crash', icon: "/assets/history.png", link: '/me/bots/blaze/crash/historico' });
     blaze_menu.push({ name: 'Padrões', icon: "/assets/patterns.png", link: '/me/bots/blaze/double/patterns' });
     blaze_menu.push({ name: 'Bot Double', icon: "/assets/blaze_icons/double.svg", link: '/me/bots/blaze/double' });
     blaze_menu.push({ name: 'Bot Crash', icon: "/assets/blaze_icons/crash.svg", link: '/me/bots/blaze/double' });
@@ -39,7 +40,7 @@ function me() {
         <div className="bg-volx h-100">
             <div className="container  d-flex flex-column pt-4">
                 <h3 className='text-white'>Pacote Blaze: </h3>
-                <div className=" d-flex flex-row gap-3">
+                <div className=" d-flex flex-row flex-wrap gap-3">
                     {
                         blaze_menu.map(item => {
                             return <div className="d-flex flex-column justify-content-center align-items-center gap-2 rounded" style={{ backgroundColor: "rgb(32, 32, 36)", height: 150, width: 250 }} key={item.name}>

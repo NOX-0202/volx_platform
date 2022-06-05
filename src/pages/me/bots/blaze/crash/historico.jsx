@@ -1,12 +1,11 @@
 import DashNav from '@/root/public/components/DashNav';
 import api from '@/root/src/libs/api';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 // import { Container } from './styles';
 
-function double() {
+function historico() {
     const router = useRouter();
 
     // const [page, setPage] = useState(1);
@@ -14,7 +13,8 @@ function double() {
 
     const getHistory = async (page) => {
         try {
-            const get_history_req = await api.get(`/bots/blaze/double/history`)
+            const get_history_req = await api.get(`/bots/blaze/crash/history`)
+            console.log(get_history_req.data.data);
             setHistory(get_history_req.data.data);
         } catch (error) {
             console.log(error);
@@ -31,41 +31,37 @@ function double() {
 
         })();
     }, [])
-
-
-    return <main>
+    return <main className='h-100 bg-volx'>
         <DashNav />
         <div className="bg-volx">
-            <div className="container h-100 ">
-                {/* back btn */}
+            <div className="container">
                 <div className="d-flex flex-column justify-content-center gap-2 py-3">
                     <a className="text-volx" onClick={() => router.back()}>
                         <i className="fas fa-arrow-left"></i> Voltar
                     </a>
-                    <h1 className='text-white'>Historico double</h1>
+                    <h1 className='text-white'>Historico Crash</h1>
                     <hr />
                 </div>
+            </div>
+
+            <div className="container">
                 <div className="d-flex flex-row-reverse flex-wrap justify-content-center gap-3">
                     {history.reverse().map(item => (
                         <div hey={item.id} className="d-flex flex-column flex-wrap justify-content-center align-items-center">
-
-                            <div style={{ backgroundColor: item.color == 1 ? "#f12c4c" : item.color == 2 ? "#1b1d2b" : "#fff", color: "#fff", padding: 10, width: 70, borderRadius: 6 }}>
-                                <div className="d-flex flex-column flex-wrap justify-content-center align-items-center" style={{ borderRadius: "100%", border: "4px solid #fff", padding: 10, width: 50, height: 50, fontWeight: 900, fontSize: "1.5em" }}>
-                                    <div>
-                                        {item.roll == 0 ? <img src="/assets/white-roll.svg" className='img-fluid' /> : item.roll}
-                                    </div>
-                                </div>
+                            <div className="d-flex flex-column flex-wrap fw-bold justify-content-center align-items-center" style={{
+                                padding: 10, fontSize: "1.2em", minWidth: 90,
+                                backgroundColor: item.crash_point > 2 ? "#04d47c" : "#1b1d2b", borderRadius: 6,
+                                color: item.crash_point > 2 ? "#006D3F" : "#fff"
+                            }}>
+                                {item.crash_point.toFixed(2)}x
                             </div>
                             <span className='text-white fw-bold'>{item.created_at.substring(11, 16)}</span>
                         </div>
                     ))}
                 </div>
-                <div className="d-flex flex-wrap justify-content-center gap-2">
-                    <button className="btn btn-primary" onClick={() => setPage(page + 1)}> Ver mais </button>
-                </div>
             </div>
         </div>
-    </main>;
+    </main >;
 }
 
-export default double;
+export default historico;
