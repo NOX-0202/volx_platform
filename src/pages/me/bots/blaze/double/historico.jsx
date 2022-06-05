@@ -1,4 +1,5 @@
 import DashNav from '@/root/public/components/DashNav';
+import Spinner from '@/root/src/components/Pageloading';
 import api from '@/root/src/libs/api';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -8,14 +9,16 @@ import React, { useEffect, useState } from 'react';
 
 function double() {
     const router = useRouter();
-
+    const [loading, setLoading] = useState(true);
     // const [page, setPage] = useState(1);
     const [history, setHistory] = useState([]);
 
     const getHistory = async (page) => {
         try {
+            setLoading(true);
             const get_history_req = await api.get(`/bots/blaze/double/history`)
             setHistory(get_history_req.data.data);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -46,9 +49,9 @@ function double() {
                     <hr />
                 </div>
                 <div className="d-flex flex-row-reverse flex-wrap justify-content-center gap-3">
+                    {loading && <div className='bg-volx h-100'><Spinner className="text-primary" /></div>}
                     {history.reverse().map(item => (
                         <div hey={item.id} className="d-flex flex-column flex-wrap justify-content-center align-items-center">
-
                             <div style={{ backgroundColor: item.color == 1 ? "#f12c4c" : item.color == 2 ? "#1b1d2b" : "#fff", color: "#fff", padding: 10, width: 70, borderRadius: 6 }}>
                                 <div className="d-flex flex-column flex-wrap justify-content-center align-items-center" style={{ borderRadius: "100%", border: "4px solid #fff", padding: 10, width: 50, height: 50, fontWeight: 900, fontSize: "1.5em" }}>
                                     <div>

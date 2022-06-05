@@ -1,4 +1,5 @@
 import DashNav from '@/root/public/components/DashNav';
+import Spinner from '@/root/src/components/Pageloading';
 import api from '@/root/src/libs/api';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -7,15 +8,17 @@ import React, { useEffect, useState } from 'react';
 
 function historico() {
     const router = useRouter();
-
+    const [loading, setLoading] = useState(true);
     // const [page, setPage] = useState(1);
     const [history, setHistory] = useState([]);
 
     const getHistory = async (page) => {
         try {
+            setLoading(true);
             const get_history_req = await api.get(`/bots/blaze/crash/history`)
             console.log(get_history_req.data.data);
             setHistory(get_history_req.data.data);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -46,6 +49,8 @@ function historico() {
 
             <div className="container">
                 <div className="d-flex flex-row-reverse flex-wrap justify-content-center gap-3">
+                    {loading && <div className='bg-volx h-100'><Spinner className="text-primary" /></div>}
+
                     {history.reverse().map(item => (
                         <div hey={item.id} className="d-flex flex-column flex-wrap justify-content-center align-items-center">
                             <div className="d-flex flex-column flex-wrap fw-bold justify-content-center align-items-center" style={{
