@@ -49,7 +49,9 @@ function double() {
                     <hr />
                 </div>
                 <div className="d-flex flex-row-reverse flex-wrap justify-content-center gap-3">
-                    {loading && <div className='bg-volx h-100'><Spinner className="text-primary" /></div>}
+                    <div className='bg-volx h-100 d-flex justify-content-center align-items-center fw-bold py-4' style={{ padding: 10, width: 70, height: 100, fontSize: "1.5em" }}>
+                        {loading ? <Spinner className="text-primary fa-sm" /> : <i className='fal fa-arrow-left text-white'></i>}
+                    </div>
                     {history.reverse().map(item => (
                         <div hey={item.id} className="d-flex flex-column flex-wrap justify-content-center align-items-center">
                             <div style={{ backgroundColor: item.color == 1 ? "#f12c4c" : item.color == 2 ? "#1b1d2b" : "#fff", color: "#fff", padding: 10, width: 70, borderRadius: 6 }}>

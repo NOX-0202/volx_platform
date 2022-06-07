@@ -49,8 +49,9 @@ function historico() {
 
             <div className="container">
                 <div className="d-flex flex-row-reverse flex-wrap justify-content-center gap-3">
-                    {loading && <div className='bg-volx h-100'><Spinner className="text-primary" /></div>}
-
+                    <div className='bg-volx h-100 d-flex justify-content-center align-items-center fw-bold py-3' style={{ width: 90, height: 40, fontSize: "1.5em" }}>
+                        {loading ? <div className='bg-volx h-100'><Spinner className="text-primary" /></div> : <i className='fal fa-arrow-left text-white'></i>}
+                    </div>
                     {history.reverse().map(item => (
                         <div hey={item.id} className="d-flex flex-column flex-wrap justify-content-center align-items-center">
                             <div className="d-flex flex-column flex-wrap fw-bold justify-content-center align-items-center" style={{

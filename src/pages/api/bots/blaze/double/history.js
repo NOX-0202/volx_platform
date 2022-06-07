@@ -14,7 +14,7 @@ export default async function handler(req, res) {
             const get_history = await db.select({
                 table: "double_history",
                 limit: 1000,
-                order_by: "id DESC"
+                order_by: "created_at DESC"
             }).run()
 
             return res.status(200).json(get_history);
