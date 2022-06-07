@@ -1,6 +1,7 @@
 import DashNav from '@/root/public/components/DashNav';
 import Spinner from '@/root/src/components/Pageloading';
 import api from '@/root/src/libs/api';
+import { addHours } from '@/root/src/libs/utils';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -61,7 +62,7 @@ function double() {
                                     </div>
                                 </div>
                             </div>
-                            <span className='text-white fw-bold'>{item.created_at.substring(11, 16)}</span>
+                            <span className='text-white fw-bold'>{addHours(item.created_at, 6).substring(11, 16)}</span>
                         </div>
                     ))}
                 </div>
