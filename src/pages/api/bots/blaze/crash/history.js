@@ -12,9 +12,9 @@ export default async function handler(req, res) {
 
         try {
             const get_history = await db.select({
-                table: "double_history",
+                table: "crash_history",
                 limit: 1000,
-                order_by: "created_at DESC"
+                order_by: "id DESC"
             }).run()
 
             return res.status(200).json(get_history);
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     } else if (req.method === "POST") {
         try {
             const get_history = await db.select({
-                table: "blaze_history",
+                table: "crash_history",
                 columns: ["seed"],
             }).run()
 
