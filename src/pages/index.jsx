@@ -1,3 +1,4 @@
+import Header from '@/root/public/components/Header';
 import React from 'react';
 
 function pages() {
@@ -13,7 +14,7 @@ function pages() {
 
 
     return <main>
-
+        <Header />
         <section className='main_section d-flex flex-column justify-content-center align-items-center'>
             <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "70vh" }}>
                 <h1 className='text-white text-center  fw-bolder'>Seja bem-vindo a VOLX</h1>

@@ -1,8 +1,26 @@
-import React from 'react';
+import localforage from 'localforage';
+import React, { useEffect, useState } from 'react';
 
 // import { Container } from './styles';
 
 function Header() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        localforage.getItem('user').then(user => {
+            if (user) {
+                console.log(user)
+                setUser(user[0]);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        if (user) {
+            console.log(user);
+        }
+    }, [user]);
+
     return <header className='main_header'>
         <div className="container d-flex flex-row justify-content-between align-items-baseline">
             <div className="left m-0">
@@ -42,7 +60,10 @@ function Header() {
             <div className="d-flex flex-row align-items-center ">
                 <div className="sign-in mx-4 desktop-nav">
                     <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
-                    <a href="/auth/login" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Entrar</a>
+                    {user ?
+                        <a href="/me" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Dash</a>
+                        :
+                        <a href="/auth/login" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Entrar</a>}
                 </div>
                 <a href='/auth/registrar' className='btn text-white desktop-nav fw-bold signup-btn' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</a>
             </div>
@@ -80,7 +101,11 @@ function Header() {
             <div className="d-flex flex-row align-items-center justify-content-between">
                 <div className="sign-in">
                     <i className='fal fa-user mx-2' style={{ color: "#4249db" }}></i>
-                    <a href="/auth/login" className='text-white text-decoration-none fw-bold signin-link'>Entrar</a>
+                    {user ?
+                        <a href="/me" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Dash</a>
+                        :
+                        <a href="/auth/login" className='text-decoration-none fw-bold signin-link' style={{ fontSize: 13 }}>Entrar</a>}
+                    {/* <a href="/auth/login" className='text-white text-decoration-none fw-bold signin-link'>Entrar</a> */}
                 </div>
 
                 <a href='/auth/registrar' className='btn text-white fw-bold' style={{ border: "2px solid #4249db", fontSize: 13 }}>CADASTRAR</a>

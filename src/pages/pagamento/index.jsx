@@ -74,6 +74,7 @@ function payment() {
 
         if (name === 'price') value = floatMask(value).toPrecision(2);
         if (name === "customer_document") value = mask("###.###.###-##", extractInt(value).substr(0, 11));
+        if (name === "birthdate") value = mask("##/##/####", extractInt(value).substr(0, 8));
 
         setFormData({ ...form_data, [name]: value });
     };
@@ -141,6 +142,9 @@ function payment() {
                         <fieldset className="row g-2 justify-content-start align-items-start">
                             <div className="col-7 col-md-6">
                                 <VolxInput type="tel" label="CPF" name="customer_document" id="customer_document" value={form_data.customer_document} onChange={registerFormHandler} placeholder="CPF" pattern="[0-9.\-]*" required />
+                            </div>
+                            <div className="col-7 col-md-6">
+                                <VolxInput type="tel" label="Data de Nascimento" name="birthdate" id="birthdate" value={form_data.birthdate} onChange={registerFormHandler} placeholder="CPF" pattern="[0-9.\-]*" required />
                             </div>
                             <div className="col-md-12">
                                 <VolxInput type="text" label="Nome" placeholder="Nome" name="name" id="customer_name" required value={form_data.name} onChange={registerFormHandler} />
