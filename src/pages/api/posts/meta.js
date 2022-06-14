@@ -1,25 +1,29 @@
+import { formatDate } from "@/root/src/libs/utils";
 import DBWalker from "dbwalker";
 import empty from "locutus/php/var/empty";
 import { v4 as uuidv4 } from 'uuid';
+
 
 export default async function handler(req, res) {
 
     const { body, method, params, query } = req;
     const db = new DBWalker(process.env.DBWALKER_CONNECTION_URL);
 
-    if (req.method === "PUT") {
-        console.log(body)
+    if (method === "PUT") {
+        console.log({ body });
         body.created_at = formatDate(body.created_at);
         if (body.updated_at) body.updated_at = formatDate(body.updated_at);
+
         const data = await db.update({
-            table: "users",
+            table: "posts_meta",
             data: body,
-            where: [{
-                uuid: body.uuid ?? query.uuid
-            }]
+            where: [
+                `id = '${body.id}'`
+            ]
         }).run();
-        return res.status(200).json({ ...data });
-    } else if (req.method === "GET") {
+
+        return res.status(200).json(data);
+    } else if (method === "GET") {
 
         var filters = [
             `deleted_at IS NULL`
@@ -29,7 +33,7 @@ export default async function handler(req, res) {
         if (!empty(params)) Object.keys(params).map(filter => { filters.push(`${filter} = '${params[filter]}'`) });
 
         const data = await db.select({
-            table: "users",
+            table: "posts_meta",
             columns: ["*"],
             where: filters
         }).run();
@@ -37,12 +41,10 @@ export default async function handler(req, res) {
         console.log(data)
 
         return res.status(200).json(data);
-    } else if (req.method === "POST") {
+    } else if (method === "POST") {
 
-        body.uuid = uuidv4();
-        console.log(body)
         const data = await db.insert({
-            table: "users",
+            table: "posts_meta",
             data: [body]
         }).run();
 
@@ -50,16 +52,16 @@ export default async function handler(req, res) {
 
         return res.status(200).json(data);
 
-    } else if (req.method === "DELETE") {
+    } else if (method === "DELETE") {
 
         const data = await db.update({
-            table: "users",
+            table: "posts_meta",
             data: {
                 deleted_at: new Date().toISOString().replace("T", " ").split(".")[0]
             },
             where: [
                 {
-                    "uuid": query.uuid
+                    id: query.id
                 }
             ]
         }).run();

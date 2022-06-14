@@ -1,3 +1,4 @@
+import { formatDate } from "@/root/src/libs/utils";
 import DBWalker from "dbwalker";
 import empty from "locutus/php/var/empty";
 import { v4 as uuidv4 } from 'uuid';
@@ -12,10 +13,10 @@ export default async function handler(req, res) {
         body.created_at = formatDate(body.created_at);
         if (body.updated_at) body.updated_at = formatDate(body.updated_at);
         const data = await db.update({
-            table: "users",
+            table: "_navigation",
             data: body,
             where: [{
-                uuid: body.uuid ?? query.uuid
+                id: body.id ?? query.id
             }]
         }).run();
         return res.status(200).json({ ...data });
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
         if (!empty(params)) Object.keys(params).map(filter => { filters.push(`${filter} = '${params[filter]}'`) });
 
         const data = await db.select({
-            table: "users",
+            table: "_navigation",
             columns: ["*"],
             where: filters
         }).run();
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
         body.uuid = uuidv4();
         console.log(body)
         const data = await db.insert({
-            table: "users",
+            table: "_navigation",
             data: [body]
         }).run();
 
@@ -53,7 +54,7 @@ export default async function handler(req, res) {
     } else if (req.method === "DELETE") {
 
         const data = await db.update({
-            table: "users",
+            table: "_navigation",
             data: {
                 deleted_at: new Date().toISOString().replace("T", " ").split(".")[0]
             },
