@@ -13,7 +13,7 @@ body,
 main {
     // display: flex;
     // flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     // overflow: auto;
 }
 
@@ -40,6 +40,7 @@ main {
 }
 
 .form-control-lg,
+.form-control,
 .input-volx {
     color: #fff;
     border: 2px solid rgb(32, 32, 36);
@@ -65,6 +66,7 @@ main {
 }
 
 .form-control-lg:focus,
+.form-control:focus,
 .input-volx:focus {
     color: #fff;
     border: 2px solid #4249db;
@@ -73,6 +75,11 @@ main {
 }
 
 .signup-btn:hover {
+    background-color: #4249db;
+    color: #cecece;
+}
+
+.nav-link .active {
     background-color: #4249db;
     color: #cecece;
 }
