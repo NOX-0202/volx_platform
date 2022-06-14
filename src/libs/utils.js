@@ -247,3 +247,7 @@ export const search = (list, keyword, options) => {
 
     return results;
 };
+
+export function formatDate(date) {
+    return date.replace("T", " ").split(".")[0];
+}

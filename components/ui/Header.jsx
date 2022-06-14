@@ -8,9 +8,11 @@ export default function Header({ title, hide, className, loggedIn, ...props }) {
         <Head>
             <title>{title || pkg.description}</title>
         </Head>
-        {!hide && <header className={`navbar navbar-expand-lg navbar-dark bg-dark ${className}`}>
+        {!hide && <header className={`navbar navbar-expand-lg navbar-dark bg-volx ${className}`}>
             <div className="container">
-                <a className="navbar-brand" href="#">Dashboard</a>
+                <a className="navbar-brand" href="#">
+                    <img src="/assets/logo.svg" alt="Volx Logo" width={75} />
+                </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
